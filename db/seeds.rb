@@ -57,3 +57,16 @@ Game.all.each {|h| puts h.to_json}
 
 puts "\nTask 4 finished"
 
+game = Game.find_by(id: 3)
+game.destroy
+puts "\nGame #3 destroyed:"
+Game.all.each {|h| puts h.to_json}
+
+Game.destroy_by(genre: 'Adventure')
+puts "\nAdventure games destroyed:"
+Game.all.each {|h| puts h.to_json}
+
+puts "\nAll games destroyed:"
+Game.destroy_all
+
+puts "\nTask 5 finished"
