@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_185914) do
+ActiveRecord::Schema.define(version: 2020_05_20_210815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_185914) do
     t.bigint "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
     t.index ["game_id"], name: "index_critics_on_game_id"
   end
 
@@ -38,7 +39,10 @@ ActiveRecord::Schema.define(version: 2020_05_20_185914) do
     t.string "genre"
     t.integer "price"
     t.date "release_date"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_games_on_company_id"
   end
 
   add_foreign_key "critics", "games"
+  add_foreign_key "games", "companies"
 end
